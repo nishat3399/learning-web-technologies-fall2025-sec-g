@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Name Form</title>
+</head>
+<body>
+
+<form onsubmit="return test()">
+    Username: <input type="text" id="username" name="Name" value="" onblur="testUsername()" />
+    <p id="uError"></p>
+    <input type="submit" name="" value="Submit" />
+</form>
+
+<script>
+    let uError = document.getElementById('uError');
+    let username = document.getElementById('username');
+
+    function testUsername(){
+        if(username.value== ""){
+            uError.innerHTML = "Please type username first!";
+            uError.style.color = "red";
+        }else{
+            uError.innerHTML = "";
+        }
+    }
+
+    function test() {
+        testUsername(); 
+        if(uError.innerHTML !== ""){
+            return false; 
+        }
+    }
+</script>
+
+</body>
+</html>

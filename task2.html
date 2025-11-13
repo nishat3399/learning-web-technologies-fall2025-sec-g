@@ -1,0 +1,47 @@
+<head>
+  <title>Email Validation</title>
+</head>
+<body>
+
+<form onsubmit="return emailValidation()">
+  Email: <input type="text" id="email" name="email" onblur="emailValidation()">
+  <p id="uError"></p>
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+  let uError = document.getElementById("uError");
+  let email = document.getElementById("email");
+
+  function emailValidation() {
+    let emailValue = email.value;
+    uError.innerHTML = ""; 
+
+    if (emailValue === "") {
+      uError.innerHTML = "Email field cannot be empty!";
+      uError.style.color = "red";
+      return false;
+    }
+
+    let atFound = false;
+    let dotFound = false;
+
+    for (let i = 0; i < emailValue.length; i++) {
+      if (emailValue[i] === "@") {
+        atFound = true;
+      }
+      if (atFound && emailValue[i] === ".") {
+        dotFound = true;
+      }
+    }
+
+    if (!atFound || !dotFound) {
+      uError.innerHTML = "Invalid email format!";
+      uError.style.color = "red";
+      return false;
+    }
+  }
+</script>
+
+</body>
+
