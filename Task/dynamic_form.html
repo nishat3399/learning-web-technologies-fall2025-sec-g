@@ -1,0 +1,58 @@
+<html>
+<body>
+<h1>Dynamic Form</h1>
+
+<input type="text" id="fieldName">
+
+<select id="fieldType">
+    <option value="text">Text</option>
+    <option value="email">Email</option>
+    <option value="number">Number</option>
+</select>
+
+<button onclick="addField()">Add</button><br><br>
+
+
+<div id="formArea"></div>
+
+<br>
+
+<button onclick="saveForm()">Save</button>
+
+<script>
+function addField() {
+    let name = document.getElementById("fieldName").value;
+    let type = document.getElementById("fieldType").value;
+
+    if (name === "") {
+        alert("Enter field name");
+        return;
+    }
+
+    let div = document.createElement("div");
+
+  
+    let label = document.createElement("label");
+    label.innerHTML = name + ": ";
+    div.appendChild(label);
+
+  
+    let input = document.createElement("input");
+    input.type = type;
+    div.appendChild(input);
+
+   
+    document.getElementById("formArea").appendChild(div);
+
+  
+    document.getElementById("fieldName").value = "";
+}
+
+function saveForm() {
+
+    alert("User details is saved");
+}
+</script>
+
+</body>
+</html>
